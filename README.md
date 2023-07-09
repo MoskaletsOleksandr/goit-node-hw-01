@@ -43,14 +43,14 @@ npm run getContacts
 
 2. Get information about a contact by its ID:
 
-npm run getContactById -- --id <contact-id>
+npm run getContactById -- --id contact-id
 
 3. Add a new contact:
 
-npm run addContact -- --name <contact-name> --email <contact-email> --phone <contact-phone>
+npm run addContact -- --name contact-name --email contact-email --phone contact-phone
 
 4. Delete a contact by its ID:
 
-npm run deleteContactById -- --id <contact-id>
+npm run deleteContactById -- --id contact-id
 
-Replace <contact-id>, <contact-name>, <contact-email>, and <contact-phone> with the appropriate values.
+Replace contact-id, contact-name, contact-email, and contact-phone with the appropriate values.

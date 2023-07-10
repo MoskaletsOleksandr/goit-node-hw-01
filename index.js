@@ -16,61 +16,46 @@ const argv = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
-      try {
-        const allContacts = await contacts.listContacts();
-        if (allContacts === null) {
-          console.error(
-            'Error while receiving contacts. Please try again later.'
-          );
-          break;
-        }
-        if (allContacts.length === 0) {
-          console.log('There are no contacts in the list.');
-        } else {
-          console.log('List of contacts:');
-          console.table(allContacts, ['name', 'phone', 'email', 'id']);
-        }
-      } catch (error) {
-        console.error('Some unknown error while listing contacts');
+      const allContacts = await contacts.listContacts();
+      if (allContacts === null) {
+        console.error(
+          'Error while receiving contacts. Please try again later.'
+        );
+        break;
+      }
+      if (allContacts.length === 0) {
+        console.log('There are no contacts in the list.');
+      } else {
+        console.log('List of contacts:');
+        console.table(allContacts, ['name', 'phone', 'email', 'id']);
       }
       break;
 
     case 'get':
-      try {
-        const contactById = await contacts.getContactById(id);
-        if (contactById) {
-          console.log(`Contact by id ${id}`);
-          console.log(contactById);
-        } else {
-          console.log(`No contact was found by id ${id}`);
-          console.log(contactById);
-        }
-      } catch (error) {
-        console.error('Some unknown error while getting contact by ID');
+      const contactById = await contacts.getContactById(id);
+      if (contactById) {
+        console.log(`Contact by id ${id}`);
+        console.log(contactById);
+      } else {
+        console.log(`No contact was found by id ${id}`);
+        console.log(contactById);
       }
       break;
 
     case 'add':
-      try {
-        const addedContact = await contacts.addContact(name, email, phone);
-        console.log(`Contact added successfully: ${addedContact.name}`);
-        console.log(addedContact);
-      } catch (error) {
-        console.error('Some unknown error while adding contact');
-      }
+      const addedContact = await contacts.addContact(name, email, phone);
+      console.log(`Contact added successfully: ${addedContact.name}`);
+      console.log(addedContact);
       break;
 
     case 'remove':
-      try {
-        const removedContact = await contacts.removeContact(id);
-        if (removedContact) {
-          console.log(`Contact removed successfully: ${removedContact.name}`);
-          console.log(removedContact);
-        } else {
-          console.log(`Contact with id ${id} is not found.`);
-        }
-      } catch (error) {
-        console.error('Some unknown error while removing contact by ID');
+      const removedContact = await contacts.removeContact(id);
+      if (removedContact) {
+        console.log(`Contact removed successfully: ${removedContact.name}`);
+        console.log(removedContact);
+      } else {
+        console.log(`Contact with id ${id} is not found.`);
+        console.log(removedContact);
       }
       break;
 
